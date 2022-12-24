@@ -2,7 +2,7 @@ const {gql} = require("apollo-server-express")
 
 const userSchema=gql`
  type Token {
-    token: String!
+    token: String
  }
  type User {
 	id: Int
