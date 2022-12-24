@@ -1,40 +1,32 @@
-let users=[
-    {
-        id:1,
-        name: "Harish",
-		email: "harishgokul01@gmai.com",
-        status: true
-    },
-    {
-        id:2,
-        name: "Sarish",
-		email: "sarishgokul01@gmai.com",
-        status: true
-    },
-    {
-        id:3,
-        name: "Rarish",
-		email: "rarishgokul01@gmai.com",
-        status: false
-    },
-    {
-        id:4,
-        name: "Garish",
-		email: "garishgokul01@gmai.com",
-        status: false
-    },
-]
+const mongoose = require("mongoose")
 const userResolver={
     Query:{
-        getUser: async(root,{id}) => {return users[id-1]},
-        getAllUsers: async() => {return users},
+        getUser: async(parent,{email},{models}) => {
+            try {
+                return await models.User.findOne({email});
+            } catch (error) {
+                console.log({"msg":error.message});
+            }
+            
+        },
+        getAllUsers: async(parent,args,{models}) => {
+            try {
+                return await models.User.findAll({});
+            } catch (error) {
+                console.log({"msg":error.message});
+            }
+        },
     },
     Mutation:{
-        createUser: async(root,{id,name,email,status})=>{
-            const newUser = new Object({id,name,email,status})
-            users.push(newUser)
-            console.log(users)
-            return {...newUser}
+        createUser: async(parent,{name,email,password,status},{models})=>{
+            try {
+                const user=await models.User.create({name,email,password,status});
+                console.log(user)
+            } catch (error) {
+                console.log({"msg":error.message});
+            }
+            
+
         }
     }
 }
