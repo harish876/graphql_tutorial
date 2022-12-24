@@ -2,7 +2,8 @@ const {ApolloServer}=require('apollo-server-express');
 const express=require("express")
 
 const schema=require("./src/schema/index")
-const resolvers=require("./src/resolver")
+const controllers= require("./src/resolver")
+const resolvers=require("./src/Resolver")
 
 const PORT =4000
 
@@ -10,7 +11,7 @@ const app = express()
 const server = new ApolloServer({
   introspection:true, 
   typeDefs:schema,
-  resolvers,
+  resolvers:controllers,
 });
 server.applyMiddleware({ app })
 

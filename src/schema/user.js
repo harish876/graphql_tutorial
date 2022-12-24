@@ -1,6 +1,7 @@
 const {gql} = require("apollo-server-express")
 
 const userSchema=gql`
+ scalar date
  type Token {
     token: String
  }
