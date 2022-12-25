@@ -15,9 +15,14 @@ const userSchema=gql`
  extend type Query {
 	getUser(email: String): User
 	getAllUsers: [User]
+	me: User
   } 
  extend type Mutation {
-	createUser(id:Int,name:String,email:String,password:String,status: Boolean): User
+	createUser(name:String,email:String,password:String,status: Boolean): User
+	updateUser(name:String,email:String): User
+	deleteUser(email:String): User
+	signup(name:String,email:String,password:String,status: Boolean): Token
+	login(email:String,password:String): Token
   }
 `;
 module.exports=userSchema

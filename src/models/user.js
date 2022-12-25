@@ -1,5 +1,6 @@
 const mongoose=require("mongoose");
-
+const bcrypt=require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const userSchema=new mongoose.Schema({
 
@@ -22,9 +23,20 @@ const userSchema=new mongoose.Schema({
     },
     status:{
         type: Boolean,
-        required:[true,'please provide the user status']
+        required:[true,'please provide the user status'],
+        default:true
     }
 
 });
+userSchema.pre('save',async function(next){
 
+    const salt=await bcrypt.genSalt(10);
+    this.password=await bcrypt.hash(this.password,salt);
+    next();
+})
+userSchema.methods.comparePassword=async function(candidatePassword){
+
+    const isMatch=bcrypt.compare(candidatePassword, this.password);
+    return isMatch;
+}
 module.exports=mongoose.model('User',userSchema);
