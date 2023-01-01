@@ -72,9 +72,9 @@ const userResolver={
 
         },
         updateUser:
-            async(parent,{name,email},{models})=>{
+            async(parent,{name,email,status},{models})=>{
                 try {
-                    return await models.User.findOneAndUpdate({email},{name},{
+                    return await models.User.findOneAndUpdate({email},{name,email,status},{
                         new:true,
                         runValidators:true
                     });

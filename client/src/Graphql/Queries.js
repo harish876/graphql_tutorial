@@ -6,6 +6,7 @@ export const LOAD_USERS=gql`
             name
             email
             status
+            password
         }
     }
 `

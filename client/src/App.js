@@ -58,8 +58,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
     <Layout>
-      <Title  style={{textAlign:'center' ,fontFamily: 'Poppins'}}>
-        <img  style={{ marginRight:'10px',width:'35px' ,height:'35x'}}src={GraphqlIcon} alt="Graphql Icon"/>
+      <Title  style={{display:"flex",alignItems:'center',textAlign:'center' ,fontFamily: 'Poppins',marginLeft:"40%"}}>
+        <img  style={{ position:"relative",marginRight:'10px',width:'40px' ,height:'40x'}}src={GraphqlIcon} alt="Graphql Icon"/>
         Graphql App
       </Title>
       <Button size="middle" type="primary" style={{width:'5%',marginLeft:'10px',alignItems:'center' ,textAlign:'center'}} onClick={showModal}>
@@ -71,7 +71,10 @@ function App() {
         </div>
       </Content>
       <Modal title="Create User" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <InputForm/>
+        <InputForm 
+          data={{}}
+          type={"create"}
+        />
       </Modal>
     </Layout>
     </ApolloProvider>

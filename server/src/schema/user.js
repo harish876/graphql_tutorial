@@ -19,7 +19,7 @@ const userSchema=gql`
   } 
  extend type Mutation {
 	createUser(name:String,email:String,password:String,status: Boolean): User
-	updateUser(name:String,email:String): User
+	updateUser(name:String,email:String,status:Boolean): User
 	deleteUser(email:String): User
 	signup(name:String,email:String,password:String,status: Boolean): Token
 	login(email:String,password:String): Token
