@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Checkbox, Form, Input,Select } from 'antd';
 import { CREATE_USER } from '../Graphql/Mutation';
 import { useMutation } from '@apollo/client';
+const {Item} = Form
 const InputForm = () => {
  
     const [createUser,{error}] = useMutation(CREATE_USER)
@@ -35,7 +36,7 @@ const InputForm = () => {
       }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
-      autoComplete="off"
+      autoComplete="on"
     >
       <Form.Item
         label="Username"
@@ -50,7 +51,7 @@ const InputForm = () => {
         <Input />
       </Form.Item>
 
-      <Form.Item
+      <Item
         label="Password"
         name="password"
         rules={[
@@ -61,9 +62,9 @@ const InputForm = () => {
         ]}
       >
         <Input.Password />
-      </Form.Item>
+      </Item>
 
-      <Form.Item
+      <Item
         label="Email"
         name="email"
         rules={[
@@ -74,27 +75,16 @@ const InputForm = () => {
         ]}
       >
         <Input />
-      </Form.Item>
+      </Item>
 
-        <Form.Item label="Select" name="status">
+        <Item label="Select" name="status">
           <Select>
             <Select.Option value="true">Active</Select.Option>
             <Select.Option value="false">Inactive</Select.Option>
           </Select>
-        </Form.Item>
+        </Item>
 
-      <Form.Item
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
-
-      <Form.Item
+      <Item
         wrapperCol={{
           offset: 8,
           span: 16,
@@ -103,7 +93,7 @@ const InputForm = () => {
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
-      </Form.Item>
+      </Item>
     </Form>
   );
 };

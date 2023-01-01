@@ -1,6 +1,9 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
+import WebFont from 'webfontloader';
+import GraphqlIcon from './img/Graphql.png';
 import DisplayCard from './Components/DisplayCard'
 import InputForm from './Components/InputForm';
+import { PlusOutlined } from '@ant-design/icons';
 import {Layout,theme,Typography,Modal, Button } from 'antd';
 import {ApolloClient,
         InMemoryCache,
@@ -45,18 +48,25 @@ function App() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Poppins']
+      }
+    });
+   }, []);
   return (
     <ApolloProvider client={client}>
     <Layout>
-      <Title  style={{textAlign:'center'}}>Graphql App</Title>
-      <Button size="middle" type="primary" style={{width:'15%',marginLeft:'10px',alignItems:'end'}} onClick={showModal}>
-        Create User
+      <Title  style={{textAlign:'center' ,fontFamily: 'Poppins'}}>
+        <img  style={{ marginRight:'10px',width:'35px' ,height:'35x'}}src={GraphqlIcon} alt="Graphql Icon"/>
+        Graphql App
+      </Title>
+      <Button size="middle" type="primary" style={{width:'5%',marginLeft:'10px',alignItems:'center' ,textAlign:'center'}} onClick={showModal}>
+        <PlusOutlined/>
       </Button>
       <Content style={{padding: '10px 10px',}}>
-        <div
-          className="site-layout-content"
-          //style={{background: colorBgContainer}}
-        >
+        <div className="site-layout-content">
           <DisplayCard/>
         </div>
       </Content>
