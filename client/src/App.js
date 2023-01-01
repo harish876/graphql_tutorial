@@ -62,7 +62,7 @@ function App() {
         <img  style={{ position:"relative",marginRight:'10px',width:'40px' ,height:'40x'}}src={GraphqlIcon} alt="Graphql Icon"/>
         Graphql App
       </Title>
-      <Button size="middle" type="primary" style={{width:'5%',marginLeft:'10px',alignItems:'center' ,textAlign:'center'}} onClick={showModal}>
+      <Button size="middle" style={{width:'5%',marginLeft:'10px',alignItems:'center' ,textAlign:'center' ,backgroundColor:"#E10098" ,color:"white"}} onClick={showModal}>
         <PlusOutlined/>
       </Button>
       <Content style={{padding: '10px 10px',}}>
