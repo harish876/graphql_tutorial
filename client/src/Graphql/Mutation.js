@@ -31,5 +31,14 @@ export const UPDATE_USER=gql`
         }
     }
 `
-//updateUser(name:String,email:String,status:Boolean): User
-//createUser(name:String,email:String,password:String,status: Boolean): User
+export const DELETE_USER=gql`
+    mutation deleteUser(
+        $email:String
+    ){
+        deleteUser(
+            email:$email
+        ){
+            name
+        }
+    }
+`
